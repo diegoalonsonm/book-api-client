@@ -1,0 +1,36 @@
+import { Link } from "react-router-dom"
+import { PiBookOpenTextLight } from "react-icons/pi"
+import { BiUserCircle } from "react-icons/bi"
+import { AiOutlineEdit } from "react-icons/ai"
+import { MdOutlineDelete } from "react-icons/md"
+import { BsInfoCircle } from "react-icons/bs"
+
+export const BookSingleCard = ({book}) => {
+  return (
+    <div key={book._id} className="border-2 border-gray-500 rounded-lg pt-2 m-4 relative hover:shadow-xl">
+          <h2 className="absolute top-1 right-2 px-4 py-1 bg-red-400 rounded-lg">
+            {book.publishYear}
+          </h2>
+          <h4 className="mx-2 text-gray-500">{book._id}</h4>
+          <div className="flex justify-start items-center gap-x-2 ms-2">
+            <PiBookOpenTextLight className="text-2xl text-red-300" />
+            <h1 className="my-1">{book.title}</h1>
+          </div>
+          <div className="flex justify-start items-center gap-x-2 ms-2">
+            <BiUserCircle className="text-2xl text-red-300" />
+            <h1 className="my-1">{book.author}</h1>
+          </div>
+          <div className="flex justify-between items-center gap-x-2 mt-4 p-4">
+            <Link to={`/books/details/${book._id}`}>
+              <BsInfoCircle className="text-blue-800 text-2xl hover:text-slate-600" />
+            </Link>
+            <Link to={`/books/edit/${book._id}`}>
+              <AiOutlineEdit className="text-yellow-500 text-2xl hover:text-slate-600" />
+            </Link>
+            <Link to={`/books/delete/${book._id}`}>
+              <MdOutlineDelete className="text-red-500 text-2xl hover:text-slate-600" />
+            </Link>
+          </div>
+        </div>
+  )
+}
